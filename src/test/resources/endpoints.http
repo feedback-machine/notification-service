@@ -1,0 +1,8 @@
+#Health check
+GET http://localhost:8081/actuator/
+###
+
+
+#Send notification
+POST http://localhost:8081/events/feedback/notification/{{feedbackId}}
+
