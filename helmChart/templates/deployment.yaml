@@ -26,7 +26,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 8081
               protocol: TCP
           livenessProbe:
             httpGet:
@@ -36,6 +36,9 @@ spec:
             httpGet:
               path: /actuator/
               port: http
+          env:
+          - name: MONGODB_HOST
+            value: "mongo-mongodb"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
